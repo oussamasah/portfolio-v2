@@ -1,0 +1,13 @@
+<div id="sidebar" [ngClass]="{ 'active': isActive }">
+<i class="fa-solid icon" [ngClass]="isActive ? 'fa-angle-left' : 'fa-angle-right'" (click)="toggleClass()" ></i>
+<div class="p-3 text-white font-bold text-xl">
+    <h1 class="mb-5 text-3xl">Sahraoui Oussema</h1>
+    <ul>
+        <li><a href="javascript:void(0)" (click)="goToSection(0)" class="cursor">Home</a></li>
+        <li><a href="javascript:void(0)" (click)="goToSection(1)" class="cursor">Introduction</a></li>
+        <li><a href="javascript:void(0)" (click)="goToSection(3)" class="cursor">Competances</a></li>
+    </ul>
+   
+</div>
+
+</div>
