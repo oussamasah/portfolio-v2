@@ -1,0 +1,36 @@
+.p-carousel-items-content,
+.p-carousel,
+.p-element,
+.p-carousel-content,
+.p-carousel-container {
+  overflow: visible !important;
+}
+::ng-deep .p-carousel .p-carousel-indicator button {
+  background-color: #2b6b4e !important;
+}
+::ng-deep .p-carousel .p-highlight button {
+  background-color: #55e6a5 !important;
+}
+::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
+  background-color: #55e6a5 !important;
+  color: black;
+}
+
+::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+  background-color: #55e6a5 !important;
+  color: black;
+}
+#about-section {
+  background-color: #0f1722;
+  padding: 5%;
+  transform: skew(0, -2deg); /* makes the section slanted/skewed */
+}
+@media screen and (max-width:677px){
+  ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
+            display: none;
+    }
+  
+    ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+      display: none;
+    }
+}

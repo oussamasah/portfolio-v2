@@ -1,10 +1,14 @@
 <main class="main">
-<app-sidebar (sendDataToParent)="onDataReceived($event)" ></app-sidebar>
-<div id="content"  [ngClass]="{ 'active': isActive }">
-    <app-slider class="page" id="home"></app-slider>
-    <app-welcome class="page" id="competances"></app-welcome>
-</div>
-
+  <app-sidebar (sendDataToParent)="onDataReceived($event)"></app-sidebar>
+  <div id="content" [ngClass]="{ active: isActive }">
+    <!--  <app-slider class="page" id="home"></app-slider> -->
+    <app-welcome class="page" id="welcome"></app-welcome>
+    <app-service class="page" id="service"></app-service>
+    <app-about class="page" id="about"></app-about>
+    <app-contact class="page" id="contact"></app-contact>
+    <app-skills class="page" id="skills"></app-skills>
+    <app-experience class="page" id="experience"></app-experience>
+  </div>
 </main>
 
 <router-outlet />

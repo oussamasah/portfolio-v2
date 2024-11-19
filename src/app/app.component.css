@@ -1,31 +1,21 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:700');
-
-body {
-  font-family:'Roboto';
-  background-color: #131417;  
+.main {
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
-.main{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-   
-
+#content {
+  overflow-y: scroll;
+  width: 100%;
+  margin-left: 0%;
+  transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
 }
-#content{
-    overflow-y: scroll;
-    width: 100%;
-    margin-left: 0%;
-    transition: all 0.5s ease-in;
-    -o-transition: all 0.5s ease-in;
-    -moz-transition: all 0.5s ease-in;
-    -webkit-transition: all 0.5s ease-in;
-
-}
-#content.active{
-    width: 85%;
-    margin-left: 15.1%;
-    transition: all 0.5s ease-in;
-    -o-transition: all 0.5s ease-in;
-    -moz-transition: all 0.5s ease-in;
-    -webkit-transition: all 0.5s ease-in;
+#content.active {
+  width: 100%;
+  transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
 }

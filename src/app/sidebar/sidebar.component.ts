@@ -8,11 +8,11 @@ declare var $: any;
 export class SidebarComponent {
 
   @Output() sendDataToParent = new EventEmitter<boolean>();
-  isActive = true;
+  isActive = false;
 
   toggleClass() {
     this.isActive = !this.isActive;
-    this.sendDataToParent.emit( this.isActive );
+    this.sendDataToParent.emit(this.isActive);
   }
   goToSection(index: number): void {
     $.scrollify.move(index);  // Scroll to the section at the given index

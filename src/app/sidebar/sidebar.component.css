@@ -6,30 +6,32 @@
     align-items: center;
     width: 40px;
     height: 40px;
-    background-color: #394867;
+    background-color: #55e6a5;
     position: relative;
     z-index: 111;
     left: 100%;
     font-size: 18px;
     cursor: pointer;
-    color: #ffffff;
+    color: #02050a;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    top: 80%;
+    top: 20px;
   }
   #sidebar{
-    width: 15%;
-    background: #000;
+    border-right: 0.5px solid #55e6a5;
+    width: 300px;
+    background: #02050a;
     height: 100vh;
     z-index: 99999;
     position: fixed;
     top: 0;
-    left: -15%;
+    left: -300px;
     overflow: visible;
     transition: all 0.5s ease-in;
     -o-transition: all 0.5s ease-in;
     -moz-transition: all 0.5s ease-in;
     -webkit-transition: all 0.5s ease-in;
+    padding-left: 20px;
 
 }
 #sidebar.active{

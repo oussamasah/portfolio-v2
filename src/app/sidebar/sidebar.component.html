@@ -1,13 +1,23 @@
-<div id="sidebar" [ngClass]="{ 'active': isActive }">
-<i class="fa-solid icon" [ngClass]="isActive ? 'fa-angle-left' : 'fa-angle-right'" (click)="toggleClass()" ></i>
-<div class="p-3 text-white font-bold text-xl">
-    <h1 class="mb-5 text-3xl">Sahraoui Oussema</h1>
+<div id="sidebar" [ngClass]="{ active: isActive }">
+  <i class="fa-solid icon" [ngClass]="isActive ? 'fa-xmark' : 'fa-bars'" (click)="toggleClass()"></i>
+  <div class="p-3 text-white font-bold text-xl">
+    <h1 class="mb-5 text-3xl text-[#55e6a5]">Sahraoui Oussema</h1>
     <ul>
-        <li><a href="javascript:void(0)" (click)="goToSection(0)" class="cursor">Home</a></li>
-        <li><a href="javascript:void(0)" (click)="goToSection(1)" class="cursor">Introduction</a></li>
-        <li><a href="javascript:void(0)" (click)="goToSection(3)" class="cursor">Competances</a></li>
+      <li>
+        <a href="javascript:void(0)" (click)="goToSection(0)" class="cursor">Welcome</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" (click)="goToSection(1)" class="cursor">Services</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" (click)="goToSection(2)" class="cursor">About</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" (click)="goToSection(3)" class="cursor">Contact</a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" (click)="goToSection(4)" class="cursor">Skills</a>
+      </li>
     </ul>
-   
-</div>
-
+  </div>
 </div>
