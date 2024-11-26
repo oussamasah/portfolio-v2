@@ -1,0 +1,12 @@
+<!-- home-layout.component.html -->
+<app-sidebar (sendDataToParent)="onDataReceived($event)"></app-sidebar>
+<div id="content">
+    <app-welcome class="page" id="welcome"></app-welcome>
+    <app-service class="page" id="service"></app-service>
+    <app-about class="page" id="about"></app-about>
+    <app-contact class="page" id="contact"></app-contact>
+    <app-skills class="page" id="skills"></app-skills>
+    <app-experience class="page" id="experience"></app-experience>
+    <app-education class="page" id="education"></app-education>
+    <app-projects class="page" id="projects"></app-projects>
+</div>

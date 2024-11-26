@@ -1,0 +1,43 @@
+<h1 class="text-5xl font-bold txt-center mb-10">Welcome Section Settings</h1>
+<div class="bg-slate-800 p-10 w-full">
+    <form class="w-full" (ngSubmit)="save()">
+        <span class="my-5 p-3 bg-slate-400 block text-green-900" *ngIf="message">{{message}}</span>
+        <span class="my-5 p-3 bg-slate-400 block text-red-900" *ngIf="error">{{error}}</span>
+        <div class="grid grid-cols-2 gap-5 w-full">
+
+            <div class="firstcol">
+                <div class="form-group  mb-4  ">
+                    <label for="title" class="block  mb-3">title:</label>
+                    <input type="text" class="w-full  !bg-slate-700" id="title" [(ngModel)]="title" name="title" />
+                </div>
+                <div class="form-group mb-4 ">
+
+                    <label for="tags" class="block mb-3">Tags:</label>
+                    <textarea rows="3" class="w-full !bg-slate-700" id="tags" [(ngModel)]="tags" name="tags"></textarea>
+                </div>
+                <div class="form-group mb-4 ">
+
+                    <label for="description" class="block mb-3">Tags:</label>
+                    <textarea rows="5" class="w-full !bg-slate-700" id="description" [(ngModel)]="description"
+                        name="description"></textarea>
+                </div>
+            </div>
+            <div class="firstcol">
+                <div class="form-group  mb-4  ">
+                    <img [src]="thmubImg" alt="" width="100" class="mx-auto ">
+                    <label for="image" class="block  mb-3">Image:</label>
+                    <input type="file" class="w-full !bg-slate-700" id="image" name="image"
+                        (change)="onImageSelected($event)" />
+                </div>
+                <div class=" form-group mb-4 ">
+                    <a [href]="thmubCv" title="" class="mw-auto mb-3" target="_blank">Download Cv</a>
+
+                    <label for=" cv" class="block  mb-3">Cv:</label>
+                    <input type="file" class="w-full" id="cv" (change)="onCvSelected($event)" name="cv" />
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="!bg-black text-white px-5 py-3 ">Save</button>
+    </form>
+</div>

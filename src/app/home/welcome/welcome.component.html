@@ -8,26 +8,32 @@
       <div class="sm:w-[60%]">
         <div id="container" data-aos="zoom-in" data-aos-delay="500" data-aos-duration="500"
           class="mb-5 md:mb-20  sm:!mb-20 sm:text-left sm:text-lg md:text-5xl text-2xl inline-block leading-normal">
-          <span class="block">HI, I'M OUSSAMA!</span>
-          <span class="block">CREATIVE <span id="text1" class="ml-3"></span>
-            <span id="text2" class="ml-3"></span></span>
+          <div class="inline  max-w-[500px] " [innerHTML]="title"></div>
+          <div id="text1" class="ml-3  "></div>
+          <div id="text2" class="ml-3 "></div>
         </div>
         <p class="mb-10 inline-block sm:!mb-20 text-justify" data-aos="zoom-out" data-aos-delay="800"
           data-aos-duration="500">
-          Senior Web Developer with over 7 years of experience creating
-          high-performance web solutions. Proficient in many frameworks and API
-          integrations (Google, Facebook), I specialize in designing exceptional
-          user experiences. Combining creativity with technical expertise, I am
-          dedicated to driving the success of your team.
+          {{description}}
         </p>
         <a href="assets/files/cv.pdf" target="_blank" class="btn" data-aos="fade-out" data-aos-delay="1000"
           data-aos-duration="500">Download cv <i class="fa-solid fa-download ml-3"></i></a>
       </div>
       <div class="sm:w-[40%] pt-[100px] min-w-[200px]">
-        <div class="img image-banner" data-aos="fade-left" data-aos-delay="100" data-aos-duration="500">
-          <img decoding="async" src="assets/img/profile.png" class="img-fluid w-100 mx-auto" alt="oussama sahraoui" />
+        <div data-aos="fade-left" data-aos-delay="100" data-aos-duration="500">
+          <div class="relative img image-banner">
+            <div id="img" class="img-fluid w-100 mx-auto" [ngStyle]="{
+                  background: 'url(' + thmubImg + ')',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundSize: 'cover',
+                    'mask-image': 'url(/assets/img/profile-min.png)',
+                  '-webkit-mask-image': 'url(/assets/img/profile.png)',
+                  'mask-size': '300px 335px',
+                  '-webkit-mask-size': '300px 335px'
+                }">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

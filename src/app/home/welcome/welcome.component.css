@@ -1,25 +1,31 @@
 .image-banner::after {
   position: absolute;
   content: "";
-  background: url("/assets/img/banner.png");
+  background: url(/assets/img/banner.png);
   background-position: center top;
   background-repeat: no-repeat;
-  background-size: 97%;
-  width: 100%;
-  height: 100%;
+  background-size: 100%;
+  width: 334px;
+  height: 374px;
+  transform: translate(0px, -20px);
+  display: block;
   top: 0;
+  right: 0;
   left: 0;
-  z-index: -1;
+  z-index: 1;
+  margin: auto auto;
   animation: bannerAnimi1 linear 1s infinite alternate;
   -webkit-animation: bannerAnimi1 linear 1s infinite alternate;
 }
-.img {
-  height: auto;
-  position: relative;
-  padding: 6%;
-  z-index: 1;
-  margin: 0 50px;
+
+#img {
+  width: 300px;
+  height: 335px;
+  background-size: cover !important;
+  mask-size: '150px 150px';
+  -webkit-mask-size: '150px 150px'
 }
+
 @keyframes bannerAnimi1 {
   from {
     top: 5px;

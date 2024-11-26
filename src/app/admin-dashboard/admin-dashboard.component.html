@@ -1,0 +1,37 @@
+<div class="flex w-full gap-5">
+    <div class="sidebar bg-slate-900 p-5 h-screen  w-[300px] fixed h-screen">
+
+        <h2 class="text-2xl font-bold mb-5">Admin Dashboard</h2>
+
+        <ul class="mb-5">
+            <li>
+                <a routerLink="/admin/welcome" routerLinkActive="active" class="cursor">Welcome</a>
+            </li>
+            <li>
+                <a routerLink="/admin/service" routerLinkActive="active" class="cursor">Services</a>
+            </li>
+            <li>
+                <a routerLink="/admin/about" routerLinkActive="active" class="cursor">About</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="cursor">Contact</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="cursor">Skills</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="cursor">Experience</a>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="cursor">Education</a>
+            </li>
+        </ul>
+        <button (click)="logout()">Logout </button>
+
+
+    </div>
+    <div class=" content flex flex-col h-screen ml-[310px] mt-10 px-10 w-full">
+        <router-outlet></router-outlet>
+
+    </div>
+</div>
