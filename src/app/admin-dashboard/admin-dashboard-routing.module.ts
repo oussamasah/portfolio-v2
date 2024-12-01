@@ -6,6 +6,9 @@ import { BlogComponent } from './blog/blog.component';
 import { AuthGuard } from './auth/auth.guard';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ServiceComponent } from './service/service.component';
+import { ContactComponent } from './contact/contact.component';
+import { SkillComponent } from './skill/skill.component';
+import { ExperienceComponent } from './experience/experience.component';
 const routes: Routes = [
   {
     path: '',
@@ -14,6 +17,9 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent, canActivate: [AuthGuard] },
       { path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard] },
       { path: 'service', component: ServiceComponent, canActivate: [AuthGuard] },
+      { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
+      { path: 'skill', component: SkillComponent, canActivate: [AuthGuard] },
+      { path: 'experience', component: ExperienceComponent, canActivate: [AuthGuard] },
     ]
   },
   { path: 'login', component: LoginComponent, },

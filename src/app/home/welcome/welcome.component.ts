@@ -10,13 +10,13 @@ declare var $: any;
 })
 export class WelcomeComponent implements AfterViewInit {
   constructor(private welcomeService: WelcomeService) { }
-  title: string = ""
-  tags: string = ""
-  description: string = ""
+  title: string = "HI, I'M OUSSAMA! <br>CREATIVE"
+  tags: Array<string> | string = ["Developer", "FullStack", "TechLead", "FreeLancer"]
+  description: string = "Senior Web Developer with over 7 years of experience creating high-performance web solutions. Proficient in many frameworks and API integrations (Google, Facebook), I specialize in designing exceptional user experiences. Combining creativity with technical expertise, I am dedicated to driving the success of your team."
   image: File | null = null;
   cv: File | null = null;
-  thmubImg: string = "";
-  thmubCv: string = "";
+  thmubImg: string = "/assets/img/profile.png";
+  thmubCv: string = "/assets/files/cv.pdf";
   async ngAfterViewInit(): Promise<void> {
     await this.get()
     const elts = {

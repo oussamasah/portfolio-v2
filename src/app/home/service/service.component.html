@@ -4,8 +4,7 @@
       <h2 class="text-lg text-[#55e6a5] uppercase mb-3 sm:!mb-10 font-light">
         My SERVICE
       </h2>
-      <span class="text-2xl md:text-5xl font-bold uppercase">Bringing Your Vision to Life with Modern<br />
-        Web Technologies</span>
+      <span class="text-2xl md:text-5xl font-bold uppercase" [innerHTML]="title"></span>
     </div>
     <p-carousel [value]="services" [numVisible]="3" [numScroll]="1" [circular]="true" autoplayInterval="7000"
       data-aos="flip-up" data-aos-delay="800" data-aos-duration="500" data-aos-once="false"
@@ -14,7 +13,9 @@
         <div class="item p-5 w-full">
           <div
             class="product-item-content mt-10 sm:!mt-20 pt-7 sm:!pt-10 pb-10 px-5 relative border border-[#09101a] min-h-[200px] sm:!min-h-[300px]">
-            <img src="{{ service.icon }}" alt=" {{ service.title }}"
+            <img *ngIf="!service.icon.includes('assets')" src="{{path + service.icon }}" alt=" {{ service.title }}"
+              class="w-[70px] absolute -top-10 bg-[#0f1722] left-0 right-0 mx-auto" />
+            <img *ngIf="service.icon.includes('assets')" src="{{service.icon }}" alt=" {{ service.title }}"
               class="w-[70px] absolute -top-10 bg-[#0f1722] left-0 right-0 mx-auto" />
             <h3 class="p-mb-1 text-3xl font-bold mb-10">
               {{ service.title }}

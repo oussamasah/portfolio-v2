@@ -1,29 +1,34 @@
-input,textarea{
+input,
+textarea {
     padding: 20px;
-    outline:2px solid #55e6a5 !important;
-    --tw-ring-color: transparent!important;
+
+    --tw-ring-color: transparent !important;
 }
-input[type="submit"]{
+
+input[type="submit"] {
     background-color: #55e6a5;
-    color:#02050a ;
+    color: #02050a;
     padding: 20px 50px;
     cursor: pointer;
     font-size: 20px;
 
 }
-input[type="submit"]:hover{
-    background-color:  #0d182b;
-    color:#55e6a5 ;
+
+input[type="submit"]:hover {
+    background-color: #0d182b;
+    color: #55e6a5;
     padding: 20px 50px;
     cursor: pointer;
     font-size: 20px;
 
 }
+
 @property --num {
     syntax: '<integer>';
     initial-value: 0;
     inherits: false;
 }
+
 @property --numtwo {
     syntax: '<integer>';
     initial-value: 0;
@@ -31,14 +36,14 @@ input[type="submit"]:hover{
 }
 
 
-#contact-section  {
-    transition: --num  3s ease-in-out , --numtwo 2s ease-in-out;
-  
+#contact-section {
+    transition: --num 3s ease-in-out, --numtwo 2s ease-in-out;
 
-    counter-reset: num  var(--num)  numtwo  var(--numtwo);
- 
 
-   
+    counter-reset: num var(--num) numtwo var(--numtwo);
+
+
+
 }
 
 
@@ -51,9 +56,11 @@ input[type="submit"]:hover{
     --numtwo: 10;
 
 }
+
 #contact-section .counter-1::after {
     content: counter(num);
 }
+
 #contact-section .counter-2::after {
     content: counter(numtwo);
 }

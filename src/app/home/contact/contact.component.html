@@ -78,17 +78,58 @@
       <p class="mb-3 md:!mb-10">Reach out with any questions or project inquiries. I’ll get back to you as soon as
         possible!
       </p>
+      <div class="text-green-500 my-3" *ngIf="response_message && response_message!=null">{{response_message}}</div>
+      <div class="text-red-500 my-3" *ngIf="response_error && response_error!=null">{{response_error}}</div>
+      <form (ngSubmit)="submitForm()" [formGroup]="form" class="w-full block text-left">
+        <div class="text-red-500 text-sm italic mb-1">
+          <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            <div *ngIf="form.get('name')?.hasError('required')">*Name is required.</div>
+            <div *ngIf="form.get('name')?.hasError('pattern')  ">*Please enter a valid name.</div>
+            <div *ngIf="form.get('name')?.hasError('minlength')  ">*Please enter name min must be at least 3 chars</div>
 
-      <form action="" class="w-full block text-left">
-        <input type="text" placeholder="Your name"
-          class="focus:caret-transparent block w-full  bg-transparent placeholder-gray-400 mb-2  md:!mb-10" />
-        <input type="email" placeholder="Your email"
-          class="focus:caret-transparent block w-full  bg-transparent placeholder-gray-400 mb-2 md:!mb-10" />
-        <input type="text" placeholder="Whatsapp number"
-          class="focus:caret-transparent block w-full  bg-transparent placeholder-gray-400 mb-2 md:!mb-10" />
-        <textarea placeholder="Your message"
-          class="focus:caret-transparent block w-full  bg-transparent placeholder-gray-400 mb-2 md:!mb-10 rows-3 md:!rows-5"></textarea>
-        <input type="submit" value="Submit" class="bg-[#55E6A5] !p-2">
+          </div>
+        </div>
+        <input type="text" placeholder="Your name" id="name" formControlName="name"
+          [ngClass]="form.get('name')?.invalid && form.get('name')?.touched? '!border-red-500':' !border-[#55E6A5]'"
+          class=" block w-full  bg-transparent border-2 !caret-[#55E6A5] placeholder-gray-400 mb-2  md:!mb-5" />
+        <div class="text-red-500 text-sm italic mb-1">
+          <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+            <div *ngIf="form.get('email')?.hasError('required')">*Email is required.</div>
+            <div *ngIf="form.get('email')?.hasError('email')||form.get('email')?.hasError('pattern')">*Please enter a
+              valid email address.</div>
+
+          </div>
+        </div>
+        <input placeholder="Your email" id="email" type="email" formControlName="email"
+          [ngClass]="form.get('email')?.invalid && form.get('email')?.touched? '!border-red-500':' !border-[#55E6A5]'"
+          class=" block w-full  bg-transparent border-2 !caret-[#55E6A5] placeholder-gray-400 mb-2 md:!mb-5" />
+
+        <div class="text-red-500 text-sm italic mb-1">
+          <div *ngIf="form.get('number')?.invalid && form.get('number')?.touched">
+            <div *ngIf="form.get('number')?.hasError('required')">*WhatsApp number is required.</div>
+            <div *ngIf="form.get('number')?.hasError('pattern')">*Please enter a valid WhatsApp number (e.g.,
+              +1234567890 or
+              1234567890).</div>
+            <div *ngIf="form.get('number')?.hasError('minlength')">*WhatsApp number must be at least 10 digits
+              long.</div>
+            <div *ngIf="form.get('number')?.hasError('maxlength')">*WhatsApp number cannot exceed 15 digits.
+            </div>
+          </div>
+        </div>
+        <input type="text" placeholder="Whatsapp number" id="number" formControlName="number"
+          class=" block w-full  bg-transparent border-2  !caret-[#55E6A5] placeholder-gray-400 mb-2 md:!mb-5"
+          [ngClass]="form.get('number')?.invalid && form.get('number')?.touched? '!border-red-500':' !border-[#55E6A5]'" />
+        <div class="text-red-500 text-sm italic mb-1">
+          <div *ngIf="form.get('message')?.invalid && form.get('message')?.touched">
+            <div *ngIf="form.get('message')?.hasError('required')">*Message is required.</div>
+            <div *ngIf="form.get('message')?.hasError('minlength')">*Message must be at least 30 chars.</div>
+          </div>
+        </div>
+        <textarea placeholder="Your message" id="message" formControlName="message"
+          class=" block w-full  bg-transparent border-2 !caret-[#55E6A5] placeholder-gray-400 mb-2 md:!mb-10 rows-3 md:!rows-5"
+          [ngClass]="form.get('message')?.invalid && form.get('message')?.touched? '!border-red-500':' !border-[#55E6A5]'"></textarea>
+        <input type="submit" value="Submit" class="bg-[#55E6A5] !p-3 disabled:!opacity-50 disabled:!cursor-not-allowed"
+          [disabled]="form.invalid">
       </form>
     </div>
   </div>

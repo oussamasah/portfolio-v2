@@ -23,144 +23,25 @@
             technologies highlights my ability to learn and deliver efficient solutions across various stacks.</p>
         <div data-aos="flip-up" data-aos-delay="1000" data-aos-duration="500" data-aos-once="false">
             <p-tabView styleClass="tabview-custom bg-dark">
-                <p-tabPanel>
+                <p-tabPanel *ngFor="let c of categories">
                     <ng-template pTemplate="header">
                         <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/backend.png" />
-                            <span class="font-bold white-space-nowrap m-0 text-left">
-                                Backend
+                            <p-avatar image="assets/img/{{c.split(' ')[0].trim().toLowerCase()}}.png" />
+                            <span class="font-bold white-space-nowrap m-0 text-left uppercase">
+                                {{c}}
                             </span>
-                            <p-badge [value]="skills.backend.length"></p-badge>
+
                         </div>
                     </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4 mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-                        <div *ngFor="let s of skills.backend">
+                    <div class="grid grid-cols-2 sm:!grid-cols-4 mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
+                        <div *ngFor="let s of skills[c]" class="flex justify-start items-center gap-2">
+                            <img src="{{apiUrl + s.icon}}" alt="" width="50px" height="50px" *ngIf="s.icon.length > 0">
+                            <img src="/assets/img/mobile.png" alt="" width="50px" height="50px"
+                                *ngIf="s.icon.length == 0">
                             <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
+
                         </div>
 
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header II">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/frontend.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                Frontend
-                            </span>
-                            <p-badge [value]="skills.frontend.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.frontend">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header III">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/database.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                Databases
-                            </span>
-                            <p-badge [value]="skills.database.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.database">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header III">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/version.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                Control version
-                            </span>
-                            <p-badge [value]="skills.version.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.version">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header III">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/crm.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                Methodologie & Project manager
-                            </span>
-                            <p-badge [value]="skills.crm.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.crm">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header III">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/language.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                languages
-                            </span>
-                            <p-badge [value]="skills.language.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.language">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
-                    </div>
-                </p-tabPanel>
-                <p-tabPanel header="Header III">
-                    <ng-template pTemplate="header">
-                        <div class="flex items-center gap-2">
-                            <p-avatar image="assets/img/language.png" />
-                            <span class="font-bold white-space-nowrap m-0  text-left">
-                                Others
-                            </span>
-                            <p-badge [value]="skills.other.length"></p-badge>
-                        </div>
-                    </ng-template>
-                    <div class="grid grid-cols-4 sm:grid-cols-4mdgrid-cols-4  gap-1 lg:!gap-5  mt-3">
-
-                        <div *ngFor="let s of skills.other">
-                            <div class="mb-1 text-sm font-light  md:mb-2 md:text-xl md:font-bold">{{s.name}}</div>
-                            <div class="w-full bg-white rounded-full h-2 mb-4 ">
-                                <div class="bg-[#55e6a5] h-2 rounded-full " [style.width]="s.value + '%'"></div>
-                            </div>
-                        </div>
                     </div>
                 </p-tabPanel>
             </p-tabView>

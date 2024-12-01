@@ -21,7 +21,8 @@ import { EducationComponent } from './home/education/education.component';
 import { ProjectsComponent } from './home/projects/projects.component';
 import { HomeModule } from './home/home.module';
 import { AuthService } from './admin-dashboard/auth/auth.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor, errorInterceptor } from './admin-dashboard/auth/auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,11 +33,17 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
 
 
 
 
+
+  ],
+  providers: [
+    provideHttpClient(
+      withInterceptors([authInterceptor, errorInterceptor])
+    )
   ],
 
   bootstrap: [AppComponent]

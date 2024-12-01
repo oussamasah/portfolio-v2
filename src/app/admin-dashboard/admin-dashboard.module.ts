@@ -10,6 +10,13 @@ import { AuthService } from './auth/auth.service';
 import { BlogComponent } from './blog/blog.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ServiceComponent } from './service/service.component';
+import { ContactComponent } from './contact/contact.component';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+
+import { authInterceptor, errorInterceptor } from './auth/auth-interceptor.interceptor';
+import { SkillComponent } from './skill/skill.component';
+import { ExperienceComponent } from './experience/experience.component';
+
 
 
 
@@ -19,7 +26,10 @@ import { ServiceComponent } from './service/service.component';
     LoginComponent,
     BlogComponent,
     WelcomeComponent,
-    ServiceComponent
+    ServiceComponent,
+    ContactComponent,
+    SkillComponent,
+    ExperienceComponent
 
 
 
@@ -28,9 +38,10 @@ import { ServiceComponent } from './service/service.component';
   imports: [
     CommonModule,
     FormsModule,
-    AdminDashboardRoutingModule,
+    AdminDashboardRoutingModule
 
   ],
+
 
 
 })

@@ -19,6 +19,8 @@ import { AvatarModule } from 'primeng/avatar';
 import { TabViewModule } from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
 import { HomeRoutingModule } from './home-routing.module';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,7 +47,11 @@ import { HomeRoutingModule } from './home-routing.module';
     AvatarModule,
     TabViewModule,
     BadgeModule,
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+    RecaptchaV3Module,
+    ReactiveFormsModule
+  ],
+  providers: [{ provide: RECAPTCHA_V3_SITE_KEY, useValue: "6Lce_o0qAAAAAOa9jfpi7YUzYTxVOFVPJ5tQui4V" }],
+
 })
 export class HomeModule { }

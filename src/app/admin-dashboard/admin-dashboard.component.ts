@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -6,6 +6,7 @@ import { AuthService } from './auth/auth.service';
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })
+
 export class AdminDashboardComponent {
 
   constructor(private authService: AuthService) {

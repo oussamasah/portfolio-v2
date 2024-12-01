@@ -5,7 +5,7 @@
     backgroundSize: 'cover'
  
   }">
-    <div class="h-full bg-[#000000de] p-10">
+    <div class="h-full bg-[#000000de] p-10 ">
         <div class=" flex flex-col justify-evenly h-full container mx-auto ">
             <div class=" md:!mb-10" data-aos="fade-up" data-aos-delay="500" data-aos-duration="500"
                 data-aos-once="false">
@@ -16,100 +16,37 @@
                     and Team
                     Collaboration.</span>
             </div>
-
-            <div class="grid grid-cols-1 md:!grid-cols-3 text-left gap-5 hidden md:!grid">
-                <div data-aos="fade-left" data-aos-delay="800" data-aos-duration="500" data-aos-once="false">
-                    <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-2 inline-block">2020 - 2024</div>
-                    <div class="font-bold text-white text-2xl title-border">SHYRINPROD - Tunisia</div>
-                    <p class="text-justify">At SHYRINPROD, I developed an oil mill management app (Java, Swing,
-                        AccessDB) to
-                        optimize workflows. I created
-                        RankBoost, an SEO platform (ExpressJS, ReactJS, MongoDB), boosting user visibility by 25%. I
-                        also
-                        built
-                        YellowSmith, a
-                        website builder (GrapesJS) with a focus on performance and security. Agile Scrum and advanced
-                        security
-                        measures
-                        (CryptoJS, JWT, AES) ensured quality and collaboration.</p>
-                </div>
-
-                <div data-aos="fade-left" data-aos-delay="1000" data-aos-duration="500" data-aos-once="false">
-                    <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-3 inline-block">2017 - 2020</div>
-                    <div class="font-bold text-white text-2xl title-border">DegitalProd - Tunisia</div>
-                    <p class="text-justify">At DegitalProd, I developed custom WordPress plugins and responsive designs
-                        using
-                        PHP, JavaScript, HTML, and CSS. I
-                        tailored features to client needs, ensuring seamless design integration and optimization. My
-                        work
-                        prioritized enhancing
-                        user experiences with efficient, scalable solutions. Each project reflected a balance of
-                        creativity
-                        and
-                        technical
-                        precision.</p>
-                </div>
-
-                <div data-aos="fade-left" data-aos-delay="1200" data-aos-duration="500" data-aos-once="false">
-                    <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-3 inline-block">2016 - 2017</div>
-                    <div class="font-bold text-white text-2xl title-border">Argonautes - Tunisia</div>
-                    <p class="text-justify">At Argonautes, I created interactive animated presentations using
-                        JavaScript,
-                        jQuery, HTML, and CSS. I integrated
-                        responsive designs with Bootstrap, ensuring alignment with provided mockups. My focus was on
-                        delivering
-                        user-friendly,
-                        visually engaging solutions. Each project balanced creativity with technical accuracy to meet
-                        client
-                        expectations.</p>
-                </div>
+            <div class="relative overflow-hidden">
+                <p-carousel [value]="items" [numVisible]="3" [numScroll]="1" [circular]="false" autoplayInterval="7000"
+                    data-aos="flip-up" data-aos-delay="800" data-aos-duration="500" data-aos-once="false"
+                    [responsiveOptions]="responsiveOptions">
+                    <ng-template let-item pTemplate="item">
+                        <div class="item p-5 w-full sm:!text-left">
+                            <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-2 inline-block">{{item.daterange}}
+                            </div>
+                            <div class="font-bold text-white text-2xl title-border !uppercase">{{item.name}}</div>
+                            <p class="text-justify" [innerHTML]="item.description"></p>
+                        </div>
+                    </ng-template>
+                </p-carousel>
             </div>
-            <div class="swiper-experience block md:!hidden">
+            <!--             <div class="swiper-experience block">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-2 inline-block">2020 - 2024</div>
-                        <div class="font-bold text-white text-2xl title-border">SHYRINPROD - Tunisia</div>
-                        <p class="text-justify">At SHYRINPROD, I developed an oil mill management app (Java, Swing,
-                            AccessDB) to
-                            optimize workflows. I created RankBoost, an SEO platform (ExpressJS, ReactJS, MongoDB),
-                            boosting user
-                            visibility by 25%. I also built YellowSmith, a website builder (GrapesJS) with a focus on
-                            performance
-                            and security. Agile Scrum and advanced security measures (CryptoJS, JWT, AES) ensured
-                            quality and
-                            collaboration.</p>
+                
+                    <div class="swiper-slide " *ngFor="let item of items">
+                        <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-2 inline-block">{{item.daterange}}
+                        </div>
+                        <div class="font-bold text-white text-2xl title-border !uppercase">{{item.name}}---</div>
+                        <p class="text-justify" [innerHTML]="item.description"></p>
                     </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-3 inline-block">2017 - 2020</div>
-                        <div class="font-bold text-white text-2xl title-border">DegitalProd - Tunisia</div>
-                        <p class="text-justify">At DegitalProd, I developed custom WordPress plugins and responsive
-                            designs using
-                            PHP, JavaScript, HTML, and CSS. I tailored features to client needs, ensuring seamless
-                            design
-                            integration and optimization. My work prioritized enhancing user experiences with efficient,
-                            scalable
-                            solutions. Each project reflected a balance of creativity and technical precision.</p>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <div class="px-5 py-3 border border-1 border-[#55e6a5] mb-3 inline-block">2016 - 2017</div>
-                        <div class="font-bold text-white text-2xl title-border">Argonautes - Tunisia</div>
-                        <p class="text-justify">At Argonautes, I created interactive animated presentations using
-                            JavaScript,
-                            jQuery, HTML, and CSS. I integrated responsive designs with Bootstrap, ensuring alignment
-                            with provided
-                            mockups. My focus was on delivering user-friendly, visually engaging solutions. Each project
-                            balanced
-                            creativity with technical accuracy to meet client expectations.</p>
-                    </div>
+                    
+
                 </div>
-                <!-- Pagination and navigation -->
+              
                 <div class="swiper-pagination swiper-pagination-experience"></div>
                 <div class="swiper-button-prev swiper-button-prev-experience"></div>
                 <div class="swiper-button-next swiper-button-next-experience"></div>
-            </div>
+            </div> -->
 
         </div>
     </div>

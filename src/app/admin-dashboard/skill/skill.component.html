@@ -1,18 +1,22 @@
 <h1 class="text-5xl font-bold txt-center mb-10">Welcome Section Settings</h1>
 <div class="bg-slate-800 p-10 w-full">
-    <span class="my-5 p-3 bg-slate-400 block text-green-900" *ngIf="message">{{message}}</span>
-    <span class="my-5 p-3 bg-slate-400 block text-red-900" *ngIf="error">{{error}}</span>
-    <form (submit)="saveTitle()" class="w-full flex gap-5 mb-5">
-        <input type="text" name="title" [(ngModel)]="title" class="w-full !bg-slate-700"> <button type="submit"
-            class="!bg-slate-700 px-5 hover:!bg-slate-900">Save</button>
-    </form>
-    <div class="bg-slate-800 p-10 w-full">
+    <!--     <div class="bg-slate-800 p-10 w-full ">
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800  w-full px-3 py-2 mb-2" placeholder="Filtre...">
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800 w-full px-3 py-2 mb-2" placeholder="Filtre...">
 
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4  hover:bg-blue-700">
+            Save
+        </button>
+    </div> -->
+    <div class="bg-slate-800 p-10 w-full overflow-y-scroll h-[600px]">
 
         <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" (click)="openPopup(null)">
             Add New Item
         </button>
-
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800  px-3 py-2 ml-2" placeholder="Filtre...">
         <table class="w-full text-left mt-5 border-collapse border border-gray-700">
             <thead>
                 <tr>
@@ -21,10 +25,28 @@
                     <th class="border border-gray-700 p-2">Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr *ngFor="let item of services">
-                    <td class="border border-gray-700 p-2">{{ item.title }}</td>
-                    <td class="border border-gray-700 p-2">{{ item.description }}</td>
+            <tbody *ngIf="filter.length == 0">
+                <tr *ngFor="let item of items">
+                    <td class="border border-gray-700 p-2">{{ item.name }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.category }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.icon }}</td>
+                    <td class="border border-gray-700 p-2 flex gap-3">
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="openPopup(item)">
+                            Edit
+                        </button>
+                        <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="Delete(item.id)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="filter.length > 0">
+                <tr *ngFor="let item of filtered">
+                    <td class="border border-gray-700 p-2">{{ item.name }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.category }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.icon }}</td>
                     <td class="border border-gray-700 p-2 flex gap-3">
                         <button class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
                             (click)="openPopup(item)">
@@ -46,11 +68,18 @@
             <h2 class="text-2xl font-bold mb-4">
                 {{ editItem ? 'Edit Item' : 'Add New Item' }}
             </h2>
-            <form (ngSubmit)="saveItem()" class="flex flex-col gap-4">
+            <span class="my-5 p-3 bg-slate-400 block text-green-900" *ngIf="message">{{message}}</span>
+            <span class="my-5 p-3 bg-slate-400 block text-red-900" *ngIf="error">{{error}}</span>
+            <form (ngSubmit)="saveSkill()" class="flex flex-col gap-4">
                 <input type="text" class="border border-gray-300 !bg-slate-800  px-3 py-2 w-full" placeholder="Title"
-                    [(ngModel)]="formData.title" name="title" required />
-                <textarea rows="5" class="border border-gray-300  !bg-slate-800  px-3 py-2 w-full"
-                    placeholder="Description" [(ngModel)]="formData.description" name="description" required></textarea>
+                    required [(ngModel)]="item.name" name="name" />
+                <p>Selected Category: {{ item.category }}</p>
+                <select id="category" (change)="changeSelect($event)" name="category" [(ngModel)]="item.category"
+                    class="border border-gray-300 !bg-slate-800  px-3 py-2 w-full">
+                    <option *ngFor="let category of categories" [value]="category.value">
+                        {{ category.value }}
+                    </option>
+                </select>
                 <input type="file" class="border border-gray-300  !bg-slate-800 px-3 py-2 w-full"
                     (change)="onFileChange($event)" />
                 <div class="flex justify-end gap-2">

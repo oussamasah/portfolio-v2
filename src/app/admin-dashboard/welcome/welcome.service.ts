@@ -12,11 +12,8 @@ export class WelcomeService {
 
   constructor(private http: HttpClient) { }
   get() {
-    const token = localStorage.getItem('auth_token'); // Replace with your token storage method
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this.http.get<any>(`${this.apiUrl}/get`, { headers }).pipe(
+
+    return this.http.get<any>(`${this.apiUrl}/get`).pipe(
       tap((response) => {
         return { message: 'Welcome saved successfully' };
       }),
@@ -45,11 +42,8 @@ export class WelcomeService {
       formData.append('cv', cv);
     }
 
-    const token = localStorage.getItem('auth_token'); // Replace with your token storage method
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-    return this.http.post<any>(`${this.apiUrl}/save`, formData, { headers }).pipe(
+
+    return this.http.post<any>(`${this.apiUrl}/save`, formData).pipe(
       tap((response) => {
         return { message: 'Welcome data saved successfully' };
       }),

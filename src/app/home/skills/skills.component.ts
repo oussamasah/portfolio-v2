@@ -1,62 +1,119 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TabViewModule } from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
+import { SkillService } from '../../admin-dashboard/skill/skill.service';
+import { environment } from '../../../environment';
+interface Skill {
+  name: string;
+  id: number;
+  category: string;
+  icon: string;
+}
+
+interface SkillCategories {
+  "frontend": Skill[];
+  "backend": Skill[];
+  "database": Skill[];
+  "Controll Version": Skill[];
+  "Methodology & Project Manager": Skill[];
+  "language": Skill[];
+  "others": Skill[];
+}
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.css',
 
 })
-export class SkillsComponent {
-  skills = {
-    frontend: [
-      { name: "ReactJS", value: "97" },
-      { name: "Angular", value: "95" },
-      { name: "VueJs", value: "50" },
-      { name: "AstroJS", value: "85" },
-      { name: "NextJs", value: "80" },
-      { name: "GatsbyJs", value: "70" },
+
+export class SkillsComponent implements OnInit {
+  constructor(private service: SkillService) {
+
+  }
+  ngOnInit(): void {
+    this.getSkills()
+  }
+  categories: (keyof SkillCategories)[] = ['frontend', 'backend', 'database', 'Controll Version', 'Methodology & Project Manager', 'language', 'others'];
+  apiUrl: string = environment.apiUrl.replace(/\/+$/, '')
+  skills: SkillCategories = {
+    "frontend": [
+      { name: "ReactJS", category: "frontend", id: 1, icon: "" },
+      { name: "Angular", category: "frontend", id: 1, icon: "" },
+      { name: "VueJs", category: "frontend", id: 1, icon: "" },
+      { name: "AstroJS", category: "frontend", id: 1, icon: "" },
+      { name: "NextJs", category: "frontend", id: 1, icon: "" },
+      { name: "GatsbyJs", category: "frontend", id: 1, icon: "" },
     ],
-    backend: [
-      { name: "NodeJS", value: "98" },
-      { name: "ExpressJs", value: "98" },
-      { name: "SpringBoot", value: "94" },
-      { name: "Laravel", value: "92" },
-      { name: "Symfony", value: "97" },
-      { name: "ZendFramework", value: "87" }
+    "backend": [
+      { name: "NodeJS", category: "backend", id: 1, icon: "" },
+      { name: "ExpressJs", category: "backend", id: 1, icon: "" },
+      { name: "SpringBoot", category: "backend", id: 1, icon: "" },
+      { name: "Laravel", category: "backend", id: 1, icon: "" },
+      { name: "Symfony", category: "backend", id: 1, icon: "" },
+      { name: "ZendFramework", category: "backend", id: 1, icon: "" },
     ],
-    database: [
-      { name: "MongoDB", value: "99" },
-      { name: "MySql", value: "98" },
-      { name: "Postgress", value: "98" },
-      { name: "Redis", value: "90" },
-      { name: "SqLite", value: "91" },
+    "database": [
+      { name: "MongoDB", category: "database", id: 1, icon: "" },
+      { name: "MySql", category: "database", id: 1, icon: "" },
+      { name: "Postgress", category: "database", id: 1, icon: "" },
+      { name: "Redis", category: "database", id: 1, icon: "" },
+      { name: "SqLite", category: "database", id: 1, icon: "" },
     ],
-    version: [
-      { name: "GitHub", value: "99" },
-      { name: "Gitlab", value: "99" },
-      { name: "Bitbucket", value: "98" },
+    "Controll Version": [
+      { name: "GitHub", category: "database", id: 1, icon: "" },
+      { name: "Gitlab", category: "database", id: 1, icon: "" },
+      { name: "Gitlab", category: "database", id: 1, icon: "" },
+
     ],
-    crm: [
-      { name: "Zoho CRM", value: "98" },
-      { name: "Jira", value: "97" },
-      { name: "Salesforce", value: "70" },
-      { name: "Agile CRM", value: "65" },
-      { name: "DevOps", value: "97" },
-      { name: "Agile", value: "90" },
-      { name: "Scrum", value: "93" }
+    "Methodology & Project Manager": [
+      { name: "Zoho CRM", category: "crm", id: 1, icon: "" },
+      { name: "Jira", category: "crm", id: 1, icon: "" },
+      { name: "Salesforce", category: "crm", id: 1, icon: "" },
+      { name: "Agile CRM", category: "crm", id: 1, icon: "" },
+      { name: "DevOps", category: "crm", id: 1, icon: "" },
+      { name: "Scrum", category: "crm", id: 1, icon: "" },
+
     ],
-    language: [
-      { name: "Frensh", value: "90" },
-      { name: "English", value: "85" },
-      { name: "Deutsh", value: "64" },
+    "language": [
+      { name: "Frensh", category: "language", id: 1, icon: "" },
+
+      { name: "English", category: "language", id: 1, icon: "" },
+
+      { name: "Deutsh", category: "language", id: 1, icon: "" },
+
     ],
-    other: [
-      { name: "Wordpress", value: "90" },
-      { name: "Java", value: "92" },
-      { name: "Ionic", value: "80" },
-      { name: ".Net", value: "70" },
+    "others": [
+      { name: "Wordpress", category: "others", id: 1, icon: "" },
+      { name: "Java", category: "others", id: 1, icon: "" },
+      { name: "Ionic", category: "others", id: 1, icon: "" },
+      { name: ".Net", category: "others", id: 1, icon: "" },
+
     ]
   }
+  getSkills() {
+    this.service.getSkills().subscribe({
+      next: (res: any) => {
+        const data: any = {}; // Initialize an empty object to hold categories
+        console.log(res)
+        for (let s of res) {
+          // Check if the category already exists; if not, initialize it as an array
+          if (!data[s.category]) {
+            data[s.category] = [];
+          }
+
+          // Push the skill to the appropriate category
+          data[s.category].push(s);
+        }
+        this.skills = data
+        console.log(this.skills)
+      },
+      error: (err) => {
+
+      }
+    })
+
+  }
 }
+
+
