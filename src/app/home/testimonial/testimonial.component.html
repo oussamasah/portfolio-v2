@@ -98,7 +98,7 @@
                 </div>
                 <div class="file-input !bg-slate-800 w-full mb-2 md:!mb-5 border-2 !caret-[#55E6A5]" 
                 [ngClass]="form.get('photo')?.invalid ? '!border-red-500' : '!border-[#55E6A5]'">
-                <label for="photo" class=" !text-gray-400">*Upload Your Photo  <span *ngIf="formData.photo"> : {{ formData.photo?.name || "" }}</span></label>
+                <label for="photo" class=" !text-gray-400">*Upload Your Photo  <span *ngIf="formData.photo"> : {{ formData.photo.name || "" }}</span></label>
                 
                 <!-- Display selected file name -->
                 <input placeholder="Your photo" id="photo" type="file" (change)="onFileChange($event)"
