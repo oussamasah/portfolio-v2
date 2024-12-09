@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { WelcomeService } from '../../admin-dashboard/welcome/welcome.service';
 import { environment } from '../../../environment';
 import { lastValueFrom } from 'rxjs';
@@ -6,15 +6,19 @@ declare var $: any;
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
-  styleUrl: './welcome.component.css'
+  styleUrl: './welcome.component.css',
+  
 })
 export class WelcomeComponent implements AfterViewInit {
+  @Output() triggerPopup: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private welcomeService: WelcomeService) { }
   title: string = "HI, I'M OUSSAMA! <br>CREATIVE"
   tags: Array<string> | string = ["Developer", "FullStack", "TechLead", "FreeLancer"]
   description: string = "Senior Web Developer with over 7 years of experience creating high-performance web solutions. Proficient in many frameworks and API integrations (Google, Facebook), I specialize in designing exceptional user experiences. Combining creativity with technical expertise, I am dedicated to driving the success of your team."
   image: File | null = null;
   cv: File | null = null;
+  
   thmubImg: string = "/assets/img/profile.png";
   thmubCv: string = "/assets/files/cv.pdf";
   async ngAfterViewInit(): Promise<void> {
@@ -122,7 +126,9 @@ export class WelcomeComponent implements AfterViewInit {
       console.error(`Error: ${err.message}`);
     }
   }
-
+  openPopup() {
+    this.triggerPopup.emit(); // Notify the parent to open the popup
+  }
 }
 
 

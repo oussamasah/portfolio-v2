@@ -20,8 +20,10 @@ import { TabViewModule } from 'primeng/tabview';
 import { BadgeModule } from 'primeng/badge';
 import { HomeRoutingModule } from './home-routing.module';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgApexchartsModule} from "ng-apexcharts";
+import { AiComponent } from './ai/ai.component';
+import { TestimonialComponent } from './testimonial/testimonial.component'
 
 @NgModule({
 
@@ -36,7 +38,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     SkillsComponent,
     ExperienceComponent,
     EducationComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    AiComponent,
+    TestimonialComponent
 
   ],
   imports: [
@@ -49,9 +53,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     BadgeModule,
     HomeRoutingModule,
     RecaptchaV3Module,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    NgApexchartsModule
   ],
+  
   providers: [{ provide: RECAPTCHA_V3_SITE_KEY, useValue: "6Lce_o0qAAAAAOa9jfpi7YUzYTxVOFVPJ5tQui4V" }],
 
 })
-export class HomeModule { }
+export class HomeModule {
+
+ }

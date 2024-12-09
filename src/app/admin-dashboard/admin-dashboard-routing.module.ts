@@ -9,6 +9,9 @@ import { ServiceComponent } from './service/service.component';
 import { ContactComponent } from './contact/contact.component';
 import { SkillComponent } from './skill/skill.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { ProjectComponent } from './project/project.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { AiSkillsComponent } from './ai-skills/ai-skills.component';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +23,9 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
       { path: 'skill', component: SkillComponent, canActivate: [AuthGuard] },
       { path: 'experience', component: ExperienceComponent, canActivate: [AuthGuard] },
+      { path: 'project', component: ProjectComponent, canActivate: [AuthGuard] },
+      { path: 'testimonial', component: TestimonialComponent, canActivate: [AuthGuard] },
+      { path: 'ai-skills', component: AiSkillsComponent, canActivate: [AuthGuard] },
     ]
   },
   { path: 'login', component: LoginComponent, },

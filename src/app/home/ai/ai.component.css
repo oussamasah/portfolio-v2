@@ -1,0 +1,29 @@
+.ai-checker{
+    z-index: 9999;
+}
+/* General Scrollbar Styling for WebKit Browsers */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the vertical scrollbar */
+    height: 8px; /* Height of the horizontal scrollbar */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background:#55e6a5 ; /* Scrollbar thumb (the draggable part) */
+    border-radius: 6px; /* Round edges of the thumb */
+    cursor: pointer;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #30ad75; /* Darker color on hover */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #888; /* Scrollbar track (background) */
+    border-radius: 6px;
+  }
+  
+
+  /* Styling for Firefox */
+
+  
+  

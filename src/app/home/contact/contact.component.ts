@@ -1,3 +1,4 @@
+import { HomeService } from './../home.service';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { Component, NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +21,7 @@ export class ContactComponent {
   captchaError = false;
 
 
-  constructor(private fb: FormBuilder, private recaptchaV3Service: ReCaptchaV3Service, private http: HttpClient, private contactService: ContactService) {
+  constructor(private fb: FormBuilder, private recaptchaV3Service: ReCaptchaV3Service, private http: HttpClient, private contactService: ContactService,private homeservice:HomeService) {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern("^[a-zA-Z]+([ '-][a-zA-Z]+)*$")]],
       email: ['', [Validators.required, Validators.email, Validators.pattern("^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")]],
@@ -40,8 +41,8 @@ export class ContactComponent {
       let apiUrl = environment.apiUrl; // Adjust URL to your backend API
 
       this.recaptchaV3Service.execute('importantAction').subscribe((tokenc: string) => {
-        this.contactService.verifycaptcha(tokenc).subscribe({
-          next: (response) => {
+        this.homeservice.verifycaptcha(tokenc).subscribe({
+          next: (response:any) => {
             console.log('Verification successful:', response);
 
             this.contactService.sendform(this.form).subscribe({
@@ -56,7 +57,7 @@ export class ContactComponent {
               }
             });
           },
-          error: (error) => {
+          error: (error:any) => {
             this.response_error = "Sorry, Message not sended try later"
             console.error('Verification failed:', error);
           }

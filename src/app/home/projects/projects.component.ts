@@ -1,6 +1,8 @@
 import { Component, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import Isotope from 'isotope-layout';
 import GLightbox from 'glightbox';
+import { ProjectService } from '../../admin-dashboard/project/project.service';
+import { environment } from '../../../environment';
 
 @Component({
   selector: 'app-projects',
@@ -10,20 +12,69 @@ import GLightbox from 'glightbox';
 
 })
 export class ProjectsComponent implements AfterViewInit {
-  [x: string]: any;
 
-  items: Array<{ src: string, category: string, description: string, title: string }> = [
-    { src: 'https://picsum.photos/1200/900?random=1', category: 'category-1', description: "test", title: "title" },
-    { src: 'https://picsum.photos/1200/900?random=2', category: 'category-2', description: "test", title: "title" },
-    { src: 'https://picsum.photos/1200/900?random=3', category: 'category-1', description: "test", title: "title" },
-    { src: 'https://picsum.photos/1200/900?random=4', category: 'category-2', description: "test", title: "title" },
-    { src: 'https://picsum.photos/1200/900?random=5', category: 'category-3', description: "test", title: "title" },
-    { src: 'https://picsum.photos/1200/900?random=6', category: 'category-3', description: "test", title: "title" },
+  constructor(private service: ProjectService) {
+
+  }
+
+  [x: string]: any;
+  items: Array<{ id: number, src: string, project: string, description: string, title: string }> = []
+  defaultItems: Array<{ id: number, src: string, project: string, description: string, title: string }> = [
+    { id: 1, src: 'https://picsum.photos/1200/900?random=1', project: 'project-1', description: "test", title: "title" },
+    { id: 1, src: 'https://picsum.photos/1200/900?random=2', project: 'project-2', description: "test", title: "title" },
+    { id: 1, src: 'https://picsum.photos/1200/900?random=3', project: 'project-1', description: "test", title: "title" },
+    { id: 1, src: 'https://picsum.photos/1200/900?random=4', project: 'project-2', description: "test", title: "title" },
+    { id: 1, src: 'https://picsum.photos/1200/900?random=5', project: 'project-3', description: "test", title: "title" },
+    { id: 1, src: 'https://picsum.photos/1200/900?random=6', project: 'project-3', description: "test", title: "title" },
     // Add more items as needed
   ];
-
+  lightbox: any
   ngAfterViewInit() {
+     this.getProjects()
     // Initialize Isotope for filtering and layout
+    
+  }
+  categories: string[] = []
+  getProjects() {
+    this.service.get().subscribe({
+      next: (event: any) => {
+        if (event.data.length > 0) {
+          let list = event.data.map((l: any) => {
+            l.src = environment.apiUrl.replace(/\/+$/, '') + l.image;
+            return l
+          })
+          console.log(list)
+          
+          this.items = list
+          event.data.map((x: any) => {
+            let proj: string = x.project
+            if (!this.categories.includes(proj)) {
+              this.categories.push(proj)
+              setTimeout(()=>{
+                this.initGallery()
+              },500 )  
+
+            }
+          })
+        } else {
+          this.items = this.defaultItems;
+          setTimeout(()=>{
+            this.initGallery()
+          },500)
+
+        }
+      },
+      error: (err: any) => {
+        this.items = this.defaultItems;
+        setTimeout(()=>{
+        this.initGallery()
+      },500)
+      }
+    });
+
+  }
+  initGallery(){
+ 
     const iso = new Isotope('.isotope-container', {
       itemSelector: '.grid-item',
       layoutMode: 'fitRows', // Or 'masonry' based on your preference
@@ -39,7 +90,7 @@ export class ProjectsComponent implements AfterViewInit {
     });
 
     // Initialize GLightbox for the lightbox functionality
-    const lightbox = GLightbox({
+    this.lightbox = GLightbox({
       selector: '.glightbox',
       touchNavigation: true,  // Enable touch navigation for mobile
       keyboardNavigation: true,  // Enable touch navigation for mobile

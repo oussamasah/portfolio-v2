@@ -53,4 +53,15 @@ export class WelcomeService {
       })
     );
   }
+
+  checkJobDescriptionCompatibility(jobDescription: string) {
+    return this.http.post<any>(this.apiUrl+"/check-compatibility", jobDescription).pipe(
+      tap((response) => {
+        return { message: 'Compatibility data fetched successfully' };
+      }),
+      catchError((error) => {
+        console.error('Save failed:', error);
+        return throwError(() => error);
+      }))
+  }
 }

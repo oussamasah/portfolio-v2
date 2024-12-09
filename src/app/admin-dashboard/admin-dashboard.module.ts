@@ -16,6 +16,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptor
 import { authInterceptor, errorInterceptor } from './auth/auth-interceptor.interceptor';
 import { SkillComponent } from './skill/skill.component';
 import { ExperienceComponent } from './experience/experience.component';
+import { ProjectComponent } from './project/project.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
+import { AiSkillsComponent } from './ai-skills/ai-skills.component';
 
 
 
@@ -29,7 +32,10 @@ import { ExperienceComponent } from './experience/experience.component';
     ServiceComponent,
     ContactComponent,
     SkillComponent,
-    ExperienceComponent
+    ExperienceComponent,
+    ProjectComponent,
+    TestimonialComponent,
+    AiSkillsComponent
 
 
 

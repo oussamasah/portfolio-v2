@@ -1,7 +1,7 @@
 <!-- home-layout.component.html -->
 <app-sidebar (sendDataToParent)="onDataReceived($event)"></app-sidebar>
 <div id="content">
-    <app-welcome class="page" id="welcome"></app-welcome>
+    <app-welcome class="page" id="welcome" (triggerPopup)="openPopup()"></app-welcome>
     <app-service class="page" id="service"></app-service>
     <app-about class="page" id="about"></app-about>
     <app-contact class="page" id="contact"></app-contact>
@@ -9,4 +9,40 @@
     <app-experience class="page" id="experience"></app-experience>
     <app-education class="page" id="education"></app-education>
     <app-projects class="page" id="projects"></app-projects>
+    <app-testimonial class="page" id="testimonial"></app-testimonial>
+    <div class="fixed right-0 bottom-0 ai-avatar ai_block " [ngClass]="flystat && ishover ==false ?'flyingAnnim':''"  (mouseenter)="typeText();onMouseEnter()" (mouseleave)="onMouseOut()" [ngClass]="ishover? 'hovered':''" >
+       
+    
+            <div class="flying-robot" (mouseenter)="typeText();onMouseEnter()" (mouseleave)="onMouseOut()"></div>
+            <div class="flame absolute" (mouseenter)="typeText();onMouseEnter()" (mouseleave)="onMouseOut()"></div>
+      
+        <div class="speech-bubble text-slate-800" (mouseenter)="typeText();onMouseEnter()" (mouseleave)="onMouseOut()">
+            <div class="text-xl ">Hi, Im Oussama AI version <a href="#contact" class="font-bold !text-sm">Contact Me</a></div>
+            <div class="text-container">
+                <p class="text">{{ typedText }}<span class="cursor" *ngIf="!btnvisible">|</span> <span
+                        class="!text-slate-900 block cursor-pointer " (click)="openPopup()"
+                        [ngClass]="btnvisible?'block font-bold':'hidden'">
+                        Clic here
+                    </span></p>
+
+            </div>
+
+        </div>
+    </div>
+   
+    <app-ai  [(isPopupVisible)]="isAiVisible"></app-ai>
 </div>
+
+
+<!-- 
+<p>Selected Keywords: {{ selectedKeywords.join(', ') }}</p>
+
+
+<div class="modal" [ngClass]="{'open': modalOpen}">
+  <div class="modal-content !text-slate-900">
+    <h2>Confirm Addition</h2>
+    <p>Do you want to add "{{ currentKeyword }}" to the selected keywords?</p>
+    <button (click)="addKeyword()">Yes</button>
+    <button (click)="closeModal()">No</button>
+  </div>
+</div> -->

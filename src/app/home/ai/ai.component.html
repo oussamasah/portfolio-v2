@@ -1,0 +1,67 @@
+<div *ngIf="isPopupVisible"
+class="fixed inset-0  bg-black bg-opacity-80 flex justify-center items-center ai-checker">
+<div>
+    <div class=" bg-slate-800 p-6  shadow-md w-[80%] mx-auto">
+        <h2 class="text-2xl font-bold mb-4">
+            Checking Job Compatibility with My Profile Using AI
+        </h2>
+        <p class="mb-2">Easily assess how my skills align with your job requirements using my AI tool. Just
+            enter your needs, such as "I need a full-stack developer with React.js and Angular," and discover
+            how I can add value to your team.</p>
+        <form (ngSubmit)="checkCompatibility()" class="flex flex-col gap-4 mb-3">
+
+            <textarea rows="5" class="border border-gray-300  !bg-slate-800  px-3 py-2 w-full"
+                placeholder="We seek a developer skilled in technologies like Java, Python, JavaScript, React, Angular, and Spring Boot, with expertise in databases (MySQL, MongoDB), version control (Git), and cloud platforms (AWS, Azure). Proficiency in CI/CD tools, Docker, Kubernetes, API development, and agile practices is a strong plus."
+                [(ngModel)]="jobdescription" name="jobdescription" required></textarea>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" class="bg-gray-500 text-white py-2 px-4  hover:bg-gray-700"
+                    (click)="closePopup()">
+                    Cancel
+                </button>
+                <button type="submit" class="!bg-[#55e6a5] text-slate-800 hover:!bg-[#30ad75] py-2 px-4">
+                    Check
+                </button>
+            </div>
+        </form>
+        <div class="grid grid-cols-2" *ngIf="availableSkills.length > 0">
+            <div class="uppercase !text-center">
+                <apx-chart class="text-center" [series]="options.series" [labels]="options.labels"
+                   [chart]="options.chart" [xaxis]="options.xaxis"
+                    [stroke]="options.stroke" [plotOptions]="options.plotOptions" [title]="options.title" [colors]="options.colors">
+                
+                </apx-chart>
+                <a href="#contact" (click)="closePopup()" class="font-bold block uppercase text-xl">Contactez-moi</a>
+            </div>
+            <div class="h-[300px] overflow-y-scroll">
+                <div class="font-bold uppercase">
+                    Detected job requirements
+                </div>
+                <ul class="ml-2">
+                    <li *ngFor="let as of availableSkills let index = index;" 
+                        class="flex items-center justify-between border-b border-1 border-slate-700 p-2"><span
+                            class="text-md italic">{{availableSkills[index]}}</span>
+                        <div *ngIf="matchedSkills.includes(availableSkills[index])" class="flex gap-2">
+                            <i class="fa-solid fa-check text-[#55e6a5] text-lg font-bold"></i>
+                            <i  class="fa-solid fa-star text-[#55e6a5] text-lg font-bold"></i>
+                            </div>
+                        <div *ngIf="!matchedSkills.includes(availableSkills[index])" class="flex gap-2">
+                                <i class="fa-solid fa-xmark text-red-500 text-lg font-bold"></i>
+                                <i class="fa-solid fa-star-half-stroke text-yellow-500 text-lg font-bold"></i>
+                            </div>
+
+                    </li>
+                </ul>
+
+            </div>
+
+   
+
+        </div>
+
+
+
+    </div>
+
+</div>
+</div>

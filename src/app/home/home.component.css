@@ -1,0 +1,272 @@
+.ai-avatar{
+z-index: 1000;
+width: 250px;
+height: 400px;
+
+
+}
+.ai-avatar .speech-bubble {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(20px); /* Move the speech bubble down */
+    transition: transform 1s ease, opacity 1s ease, visibility 0s linear 1s; /* Add transitions */
+}
+
+.ai-avatar:hover .speech-bubble {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0); /* Return speech bubble to original position */
+    transition: transform 1s ease, opacity 1s ease, visibility 0s linear 0s; /* No delay for visibility change */
+}
+.apexcharts-datalabel-label tspan:nth-child(2) {
+    fill: #55e6a5;
+ }
+.speech-bubble {
+    position: absolute;
+    background: #55e6a5;
+    border-radius: .4em;
+    z-index: 99999;
+    top: -109px;
+    right: 180px;
+    box-shadow: -6px 3px 15px black;
+    width: 300px;
+    padding: 20px;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 16px solid transparent;
+	border-left-color: #55e6a5;
+	border-right: 0;
+	margin-top: -16px;
+	margin-right: -16px;
+}
+
+
+.text-container {
+    display: inline-block;
+    font-size: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap; /* Keeps text from wrapping */
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .text-container {
+    display: inline-block;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap; /* Allows wrapping and maintains spaces and line breaks */
+    max-width: 100%;
+    overflow: hidden;
+    word-wrap: break-word; /* Breaks words if they exceed the container's width */
+  }
+  
+  .text {
+    display: inline-block;
+  }
+  
+  .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: black;
+    animation: blink 0.8s step-end infinite;
+    margin-left: 2px;
+  }
+  
+  @keyframes blink {
+    0%, 50%, 100% {
+      opacity: 1;
+    }
+    25%, 75% {
+      opacity: 0;
+    }
+  }
+  
+
+
+
+
+/* General Scrollbar Styling for WebKit Browsers */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the vertical scrollbar */
+  height: 12px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb (the draggable part) */
+  border-radius: 6px; /* Round edges of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker color on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Scrollbar track (background) */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1; /* Bottom-right corner in two-direction scrollbars */
+}
+
+/* Styling for Firefox */
+html {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: #888 #f1f1f1; /* thumb-color track-color */
+}
+
+/* Example for a specific container */
+.scrollable-container {
+  width: 300px;
+  height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #555 #ddd; /* Firefox */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+/* Main container for the flying robot */
+.flying-robot {
+  
+    width: 230px;
+    height: 400px;
+    background-image: url(/assets/img/ai_profile.png);
+    background-size: contain;
+    position: absolute;
+    top: -75px;
+    left: -0px;
+    background-repeat: no-repeat;
+}
+
+.flame {
+  width: 93px;
+  height: 150px;
+  background: linear-gradient(-72deg, red, orange);
+  border-radius: 90px 124px 0px 125px;
+  transform: rotate(45deg);
+  -webkit-animation: 0.1s flame infinite;
+          animation: 0.1s flame infinite;
+  filter: blur(10px);
+  position: relative;
+  box-shadow: 17px 20px 90px #700;
+  border: 42px solid black;
+  border-left-width: 25px;
+  border-top-width: 25px;
+  position: absolute;
+  top: 250px;
+  left: 40px;
+}
+.flame:after, .flame:before {
+  content: "";
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: absolute;
+  background: linear-gradient(-45deg, red, orange);
+  -webkit-animation: 0.2s flame infinite;
+          animation: 0.2s flame infinite;
+  transform: scale(0.1) rotate(20deg);
+  border-radius: 100px 100px 0px 100px;
+  top: 20px;
+}
+.flame:before {
+  top: 0;
+  -webkit-animation-duration: 0.09s;
+          animation-duration: 0.09s;
+  transform: scale(0.1) rotate(-15deg) translate(10px, 0px);
+}
+
+.ai_block {
+  animation: slowBounce 4s ease-in-out infinite ;
+}
+.flyingAnnim{
+    animation: moveUpDown 4s ease-in-out ;
+}
+.hovered{
+  animation: none!important;
+}
+@-webkit-keyframes flame {
+  0% {
+    height: 150px;
+    width: 150px;
+  }
+  50% {
+    height: 140px;
+    width: 140px;
+  }
+  100% {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@keyframes flame {
+  0% {
+    height: 150px;
+    width: 150px;
+  }
+  50% {
+    height: 140px;
+    width: 140px;
+  }
+  100% {
+    height: 150px;
+    width: 150px;
+  }
+}
+/* Keyframe for moving the element to top and back */
+@keyframes moveUpDown {
+  0% {
+    transform: translateX(0%) translateY(0); /* Start at the bottom */
+  }
+  50% {
+    transform: translateX(0%) translateY(-120vh); /* Move to the top */
+
+  }
+  
+  60% {
+    opacity: 0;
+    transform: translateX(0%) translateY(120vh); /* Move to the top */
+    
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0%) translateY(120vh); /* Move to the top */
+    
+  }
+  100% {
+    transform: translateX(0%) translateY(0); /* Return to the bottom */
+  }
+}
+@keyframes slowBounce {
+  0% {
+    transform: translateX(-0) translateY(0); /* Start at the bottom */
+  }
+  25% {
+    transform: translateX(-0) translateY(-10px); /* Move up */
+  }
+  50% {
+    transform: translateX(-0) translateY(-0px); /* Return to original position */
+  }
+  75% {
+    transform: translateX(-0) translateY(-10px); /* Move up slightly */
+  }
+  100% {
+    transform: translateX(-0) translateY(0); /* End at the original position */
+  }
+}

@@ -23,6 +23,7 @@ import { HomeModule } from './home/home.module';
 import { AuthService } from './admin-dashboard/auth/auth.service';
 import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor, errorInterceptor } from './admin-dashboard/auth/auth-interceptor.interceptor';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { authInterceptor, errorInterceptor } from './admin-dashboard/auth/auth-i
     AppRoutingModule,
     HomeModule,
     HttpClientModule,
+
 
 
 

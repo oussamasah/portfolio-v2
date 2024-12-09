@@ -13,18 +13,7 @@ export class ContactService {
   private apiUrl = environment.apiUrl; // Adjust URL to your backend API
 
   constructor(private http: HttpClient) { }
-  verifycaptcha(token: string) {
 
-    return this.http.post(`${this.apiUrl}api/recaptcha/verify`, { token }).pipe(
-      tap((response) => {
-        return { message: 'Captcha verified successfully' };
-      }),
-      catchError((error) => {
-        console.error('captcha failed:', error);
-        return throwError(() => error);
-      })
-    );
-  }
   sendform(form: FormGroup) {
 
     return this.http.post(`${this.apiUrl}api/contact/save`, form.value).pipe(

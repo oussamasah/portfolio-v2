@@ -1,0 +1,108 @@
+<h1 class="text-5xl font-bold txt-center mb-10">Project Section Settings</h1>
+<div class="bg-slate-800 p-10 w-full">
+    <!--     <div class="bg-slate-800 p-10 w-full ">
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800  w-full px-3 py-2 mb-2" placeholder="Filtre...">
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800 w-full px-3 py-2 mb-2" placeholder="Filtre...">
+
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4  hover:bg-blue-700">
+            Save
+        </button>
+    </div> -->
+    <div class="bg-slate-800 p-10 w-full overflow-y-scroll h-[600px]">
+
+        <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" (click)="openPopup(null)">
+            Add New Item
+        </button>
+        <input type="text" name="filterable" id="filtrable" (input)="filterData($event)"
+            class="border border-gray-300 !bg-slate-800  px-3 py-2 ml-2" placeholder="Filtre...">
+        <table class="w-full text-left mt-5 border-collapse border border-gray-700">
+            <thead>
+                <tr>
+                    <th class="border border-gray-700 p-2">Project</th>
+                    <th class="border border-gray-700 p-2">title</th>
+                    <th class="border border-gray-700 p-2">Description</th>
+                    <th class="border border-gray-700 p-2">Action</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="filter.length == 0">
+                <tr *ngFor="let item of items">
+                    <td class="border border-gray-700 p-2">{{ item.project }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.title }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.description }}</td>
+                    <td class="border border-gray-700 p-2 flex gap-3">
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="openPopup(item)">
+                            Edit
+                        </button>
+                        <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="Delete(item.id)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="filter.length > 0">
+                <tr *ngFor="let item of filtered">
+                    <td class="border border-gray-700 p-2">{{ item.project }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.title }}</td>
+                    <td class="border border-gray-700 p-2">{{ item.description }}</td>
+                    <td class="border border-gray-700 p-2 flex gap-3">
+                        <button class="bg-yellow-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="openPopup(item)">
+                            Edit
+                        </button>
+                        <button class="bg-red-500 text-white py-1 px-3 rounded hover:bg-yellow-700"
+                            (click)="Delete(item.id)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Popup Modal -->
+    <div *ngIf="isPopupVisible" class="fixed inset-0  bg-black bg-opacity-80 flex justify-center items-center">
+        <div class=" bg-slate-800 p-6  shadow-md w-1/3">
+            <h2 class="text-2xl font-bold mb-4">
+                {{ editItem ? 'Edit Item' : 'Add New Item' }}
+            </h2>
+            <span class="my-5 p-3 bg-slate-400 block text-green-900" *ngIf="message">{{message}}</span>
+            <span class="my-5 p-3 bg-slate-400 block text-red-900" *ngIf="error">{{error}}</span>
+            <form (ngSubmit)="saveProject()" class="flex flex-col gap-4">
+                <input type="text" class="border border-gray-300 !bg-slate-800  px-3 py-2 w-full" placeholder="Project name"
+                    required [(ngModel)]="item.project" name="name" />
+
+                <input type="text" class="border border-gray-300 !bg-slate-800  px-3 py-2 w-full" placeholder="Image title "
+                    required [(ngModel)]="item.title" name="name" />
+                <textarea rows="5" class="border border-gray-300  !bg-slate-800  px-3 py-2 w-full"
+                    placeholder="Description" [(ngModel)]="item.description" name="description" required></textarea>
+                <input type="file" class="border border-gray-300  !bg-slate-800 px-3 py-2 w-full"
+                    (change)="onFileChange($event)" />
+                <div class="flex justify-end gap-2">
+                    <button type="button" class="bg-gray-500 text-white py-2 px-4  hover:bg-gray-700"
+                        (click)="closePopup()">
+                        Cancel
+                    </button>
+                    <button type="submit" class="bg-blue-500 text-white py-2 px-4  hover:bg-blue-700">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div *ngIf="isDeleteDialogOpen" class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50">
+    <div class="bg-slate-800 p-6 rounded-md shadow-lg w-96">
+        <h2 class="text-xl font-semibold mb-4">Confirm Deletion</h2>
+        <p class="text-gray-700 mb-4">Are you sure you want to delete this item?</p>
+        <div class="flex justify-end gap-4">
+            <button (click)="cancelDelete()"
+                class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
+            <button (click)="confirmDelete()"
+                class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Delete</button>
+        </div>
+    </div>
+</div>
